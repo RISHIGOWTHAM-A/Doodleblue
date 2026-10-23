@@ -31,10 +31,12 @@ function ProductDetailPage() {
     if (!product) dispatch(fetchProductById(id))
   }, [id, product, status, dispatch])
 
-  useEffect(() => {
+  const [prevId, setPrevId] = useState(id)
+  if (prevId !== id) {
+    setPrevId(id)
     setQty(1)
     setActiveImg(0)
-  }, [id])
+  }
 
   if (!product) {
     if (detailStatus === 'failed') {

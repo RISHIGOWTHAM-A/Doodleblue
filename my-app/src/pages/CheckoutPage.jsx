@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router'
+import { Link, Navigate } from 'react-router'
 import { z } from 'zod'
 import OrderSuccessModal from '../components/OrderSuccessModal'
+import { selectUser } from '../features/auth/authSlice'
 import {
   clearCart,
   selectTotalItems,
@@ -76,12 +77,17 @@ function Field({ label, name, error, ...props }) {
 function CheckoutPage() {
   const dispatch = useDispatch()
   const items = useSelector((state) => state.cart.items)
+  const user = useSelector(selectUser)
   const totalItems = useSelector(selectTotalItems)
   const subtotal = useSelector(selectTotalPrice)
   const shipping = subtotal >= 100 ? 0 : 5
   const total = subtotal + shipping
 
-  const [form, setForm] = useState(EMPTY_FORM)
+  const [form, setForm] = useState(() => ({
+    ...EMPTY_FORM,
+    fullName: user?.name ?? '',
+    email: user?.email ?? '',
+  }))
   const [errors, setErrors] = useState({})
   const [placed, setPlaced] = useState(null)
 
@@ -134,6 +140,10 @@ function CheckoutPage() {
         <OrderSuccessModal order={placed} />
       </main>
     )
+  }
+
+  if (!user) {
+    return <Navigate to="/signin?next=/checkout" replace />
   }
 
   if (items.length === 0) {

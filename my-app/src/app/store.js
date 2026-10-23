@@ -14,18 +14,20 @@ import productsReducer from '../features/products/productsSlice'
 import cartReducer from '../features/cart/cartSlice'
 import wishlistReducer from '../features/wishlist/wishlistSlice'
 import uiReducer from '../features/ui/uiSlice'
+import authReducer from '../features/auth/authSlice'
 
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   wishlist: wishlistReducer,
   ui: uiReducer,
+  auth: authReducer,
 })
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'wishlist'],
+  whitelist: ['cart', 'wishlist', 'auth'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

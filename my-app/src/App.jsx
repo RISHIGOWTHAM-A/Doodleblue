@@ -7,6 +7,8 @@ import CheckoutPage from './pages/CheckoutPage'
 import OrdersPage from './pages/OrdersPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import ProductsPage from './pages/ProductsPage'
+import ProfilePage from './pages/ProfilePage'
+import SignInPage from './pages/SignInPage'
 import WishlistPage from './pages/WishlistPage'
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
       <ToastHost />

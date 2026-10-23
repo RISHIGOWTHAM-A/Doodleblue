@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router'
+import { selectUser } from '../features/auth/authSlice'
 import { selectTotalItems } from '../features/cart/cartSlice'
 import { setSearch } from '../features/products/productsSlice'
 import { selectWishlistCount } from '../features/wishlist/wishlistSlice'
@@ -9,6 +10,7 @@ function Header() {
   const totalItems = useSelector(selectTotalItems)
   const wishlistCount = useSelector(selectWishlistCount)
   const search = useSelector((state) => state.products.search)
+  const user = useSelector(selectUser)
 
   return (
     <header className="header">
@@ -86,6 +88,37 @@ function Header() {
               {totalItems}
             </span>
           </NavLink>
+          {user ? (
+            <NavLink
+              to="/profile"
+              className="cart-btn cart-btn-avatar"
+              aria-label={`Profile — ${user.name}`}
+              title={user.name}
+            >
+              <span className="avatar avatar-sm" aria-hidden="true">
+                {user.name
+                  .split(/\s+/)
+                  .map((w) => w[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase()}
+              </span>
+            </NavLink>
+          ) : (
+            <NavLink to="/signin" className="cart-btn" aria-label="Sign in">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
+              </svg>
+              <span className="nav-label">Sign in</span>
+            </NavLink>
+          )}
         </nav>
       </div>
     </header>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductCard from '../components/ProductCard'
+import SortSelect from '../components/SortSelect'
 import { fetchProducts, setCategory } from '../features/products/productsSlice'
 
 const SORTS = [
@@ -44,16 +45,10 @@ function ProductsPage() {
           <h1>All products</h1>
           <p className="muted">Showing {visible.length} products</p>
         </div>
-        <label className="sort">
+        <div className="sort">
           Sort by
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            {SORTS.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label}
-              </option>
-            ))}
-          </select>
-        </label>
+          <SortSelect options={SORTS} value={sort} onChange={setSort} />
+        </div>
       </div>
 
       <div className="chips">
