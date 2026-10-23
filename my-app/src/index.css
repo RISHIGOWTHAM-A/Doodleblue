@@ -2033,3 +2033,141 @@ img {
 .cart-btn-avatar {
   padding: 8px;
 }
+
+/* ---------- More motion polish ---------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Header */
+.header {
+  animation: slideDown 0.35s ease both;
+}
+
+.search {
+  transition: box-shadow 0.2s ease;
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.4);
+}
+
+/* Nav */
+.nav-link {
+  transition: opacity 0.15s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.72;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.cart-btn {
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.cart-btn:hover {
+  background: #343c52;
+  transform: translateY(-1px);
+}
+
+.cart-btn.active {
+  background: var(--accent);
+}
+
+/* Buttons */
+.btn {
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-1px);
+}
+
+/* Chips: stagger in + hover lift */
+.chips .chip {
+  animation: fadeUp 0.3s ease both;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    transform 0.15s;
+}
+
+.chips .chip:nth-child(2) {
+  animation-delay: 40ms;
+}
+
+.chips .chip:nth-child(3) {
+  animation-delay: 80ms;
+}
+
+.chips .chip:nth-child(4) {
+  animation-delay: 120ms;
+}
+
+.chips .chip:nth-child(n + 5) {
+  animation-delay: 160ms;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+}
+
+/* Cart + summary entrances */
+.summary {
+  animation: fadeUp 0.4s 0.08s ease both;
+}
+
+.cart-row {
+  animation: fadeUp 0.35s ease both;
+}
+
+.cart-row:nth-child(2) {
+  animation-delay: 50ms;
+}
+
+.cart-row:nth-child(3) {
+  animation-delay: 100ms;
+}
+
+.cart-row:nth-child(n + 4) {
+  animation-delay: 150ms;
+}
+
+/* Auth icon pop */
+.auth-icon {
+  animation: popIn 0.4s 0.05s ease both;
+}
