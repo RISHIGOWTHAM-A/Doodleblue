@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import ScrollToTop from './components/ScrollToTop'
 import ToastHost from './components/Toast'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />

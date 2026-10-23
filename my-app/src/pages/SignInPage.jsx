@@ -151,7 +151,7 @@ function SignInPage() {
             value={form.name}
             onChange={update}
             error={errors.name}
-            placeholder="Priya Kumar"
+            placeholder="Rishi"
           />
         )}
         <Field
@@ -161,7 +161,7 @@ function SignInPage() {
           value={form.email}
           onChange={update}
           error={errors.email}
-          placeholder="priya@example.com"
+          placeholder="rishi@example.com"
         />
         <Field
           label="Password"
@@ -170,7 +170,9 @@ function SignInPage() {
           value={form.password}
           onChange={update}
           error={errors.password}
-          placeholder="••••••••"
+          placeholder={
+            mode === 'signup' ? 'Create a password' : 'Enter your password'
+          }
           autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
         />
         {mode === 'signup' && (
@@ -181,7 +183,7 @@ function SignInPage() {
             value={form.confirm}
             onChange={update}
             error={errors.confirm}
-            placeholder="••••••••"
+            placeholder="Repeat the password"
             autoComplete="new-password"
           />
         )}
@@ -201,3 +203,4 @@ function SignInPage() {
 }
 
 export default SignInPage
+

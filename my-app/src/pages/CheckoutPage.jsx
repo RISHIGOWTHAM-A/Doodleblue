@@ -178,7 +178,7 @@ function CheckoutPage() {
             value={form.fullName}
             onChange={update}
             error={errors.fullName}
-            placeholder="Priya Kumar"
+            placeholder="Rishi Kumar"
           />
           <div className="field-row">
             <Field
@@ -188,7 +188,7 @@ function CheckoutPage() {
               value={form.email}
               onChange={update}
               error={errors.email}
-              placeholder="priya@example.com"
+              placeholder="rishi@example.com"
             />
             <Field
               label="Phone"
@@ -327,3 +327,4 @@ function CheckoutPage() {
 }
 
 export default CheckoutPage
+
